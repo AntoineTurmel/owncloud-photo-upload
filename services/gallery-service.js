@@ -6,8 +6,12 @@ angular.module('uploadApp')
 	    var photos = [];	
 	    var files = $window.navigator.getDeviceStorage('pictures');
 
+	    var param = {
+	      since: new Date((+new Date()) - 7*24*60*60*1000)
+	    }
+
 	    //for testing purpose, use gaia folder as a storage folder
-	    var cursor = files.enumerate('gaia');
+	    var cursor = files.enumerate('DCIM/100MZLLA', param);
 
 		cursor.onsuccess = function() {
 		    if (this.done) {
